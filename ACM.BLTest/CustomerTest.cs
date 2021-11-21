@@ -13,10 +13,10 @@ public class CustomerTest
         // ..Arrange
         Customer customer = new Customer
         {
-            FirstName = "Bilbo",
-            LastName = "Baggins"
+            FirstName = "Temitope",
+            LastName = "Adegoke"
         };
-        string expected = "Baggins, Bilbo";
+        string expected = "Adegoke, Temitope";
 
         // .. Acts
         string actual = customer.FullName;
@@ -24,4 +24,40 @@ public class CustomerTest
         // .. Assert
         Assert.AreEqual(expected, actual);
     }
+
+    [TestMethod]
+    public void FullNameFirstNameEmpty()
+    {
+        // ..Arrange
+        Customer customer = new Customer
+        {
+            LastName = "Adegoke"
+        };
+        string expected = "Adegoke";
+
+        // ..Act
+        string actual = customer.FullName;
+
+        // ..Assert
+        Assert.AreEqual(expected, actual);
+    }
+
+    [TestMethod]
+    public void FullNameLastNameEmpty()
+    {
+        // ..Arrange
+        Customer customer = new Customer
+        {
+            FirstName = "Temitope"
+        };
+        string expected = "Temitope";
+
+        // ..Act
+        string actual = customer.FullName;
+
+        // ..Assert
+        Assert.AreEqual(expected, actual);
+    }
+
+
 }
