@@ -59,5 +59,20 @@ public class CustomerTest
         Assert.AreEqual(expected, actual);
     }
 
+    [TestMethod]
+    public void InstanceCountValid()
+    {
+        // ..Arrange
+        Customer customer = new Customer();
+        Customer.InstanceCount += 1;
+        int expected = 1;
+
+        // ..Act
+        int actual = Customer.InstanceCount;
+
+        // ..Assert
+        Assert.AreEqual(expected, actual);
+    }
+
 
 }
