@@ -60,12 +60,14 @@ public class CustomerTest
     }
 
     [TestMethod]
-    public void InstanceCountValid()
+    public void InstanceCountAfterFirst()
     {
         // ..Arrange
         Customer customer = new Customer();
-        Customer.InstanceCount += 1;
-        int expected = 1;
+        Customer.InstanceCount++;
+        Customer customer2 = new Customer();
+        Customer.InstanceCount++;
+        int expected = 2;
 
         // ..Act
         int actual = Customer.InstanceCount;
@@ -74,5 +76,33 @@ public class CustomerTest
         Assert.AreEqual(expected, actual);
     }
 
+    [TestMethod]
+    public void ValidateInvalidData()
+    {
+        // .. Arrange
+        Customer customer = new Customer();
+        bool expected = false;
+        // .. Acts
+        bool actual = customer.ValidateData();
+        // .. Assert
+        Assert.AreEqual(expected, actual);
+    }
 
+    [TestMethod]
+    public void ValidateValidData()
+    {
+        // .. Arrange
+        Customer customer = new Customer
+        {
+            LastName = "Adegoke",
+            FirstName = "Temitope"
+        };
+        bool expected = true;
+
+        // ..Act
+        bool actual = customer.ValidateData();
+
+        // ..Assert
+        Assert.AreEqual(expected, actual);
+    }
 }
